@@ -1,0 +1,1023 @@
+{
+	"info": {
+		"_postman_id": "a2d21426-9cda-41c6-b5dd-0d2a88594cb8",
+		"name": "Express Starter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21034857"
+	},
+	"item": [
+		{
+			"name": "App",
+			"item": [
+				{
+					"name": "/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/doc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/doc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"doc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cache",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cache",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cache"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cache/clear",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cache/clear",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cache",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "/auth/signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"superadmin@demo.com\",\r\n  \"password\": \"Password1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/signin",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sespinosa123123123@gmail.com\",\r\n    \"username\": \"sespinosa27\",\r\n    \"firstname\": \"Suzy\",\r\n    \"lastname\": \"Espinosa\",\r\n    \"job\": \"Project Manager\",\r\n    \"password\": \"Password1\",\r\n    \"passwordConfirm\": \"Password1\",\r\n    \"role_id\": 1,\r\n    \"status_id\": 1,\r\n    \"company_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"refresh\": \"{{refresh_token}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/create-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"Password1\",\r\n  \"passwordConfirm\": \"Password1\",\r\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjM3LCJpYXQiOjE2ODc0MjAyNjcsImV4cCI6MTY4NzQyMzg2N30.mCJiKvQzfO1DUdaMxwy1FSz2MSWJZcXQl_T5XswGb3c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/create-password/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"create-password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/forgot-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"demo@demo.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/auth/reset-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", jsonData.token);\r",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"Password1\",\r\n  \"passwordConfirm\": \"Password1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/reset-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "/companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/companies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companies/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/companies/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companies",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Brainsphere\",\r\n    \"address\": \"78 Mosinee Street\",\r\n    \"zipcode\": \"75104 CEDEX 02\",\r\n    \"city\": \"Paris 02\",\r\n    \"country\": \"France\",\r\n    \"countryCode\": \"FR\",\r\n    \"latitude\": 43.4945737,\r\n    \"longitude\": 5.8978018\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/companies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companies/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Devcast\",\r\n    \"address\": \"8 Erie Park\",\r\n    \"zipcode\": \"75837 CEDEX 17\",\r\n    \"city\": \"Paris 17\",\r\n    \"country\": \"France\",\r\n    \"countryCode\": \"FR\",\r\n    \"latitude\": 43.4945737,\r\n    \"longitude\": 5.8978018\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/companies/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companies/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/companies/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Periods",
+			"item": [
+				{
+					"name": "/periods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/periods",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"periods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/periods/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/periods/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"periods",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "/roles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/roles",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/roles/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/roles/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statuses",
+			"item": [
+				{
+					"name": "/statuses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/statuses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"statuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/statuses/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/statuses/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"statuses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "/notifications/user/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications/user/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/notifications/sender/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications/sender/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"sender",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/notifications/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/notifications",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"category\": \"user\",\r\n\t\"content\": \"notification_role\",\r\n\t\"sender\": {\r\n\t\t\"avatar\": null,\r\n\t\t\"company\": {\r\n\t\t\t\"address\": \"085 Runolfsdottir Valley\",\r\n\t\t\t\"city\": \"Fort Worth\",\r\n\t\t\t\"country\": \"Mozambique\",\r\n\t\t\t\"countryCode\": \"NL\",\r\n\t\t\t\"created_at\": \"2023-06-06 09:36:07\",\r\n\t\t\t\"id\": 2,\r\n\t\t\t\"latitude\": -49.1824,\r\n\t\t\t\"longitude\": 174.105,\r\n\t\t\t\"name\": \"Gusikowski - Fisher\",\r\n\t\t\t\"updated_at\": \"2023-06-06 09:36:07\",\r\n\t\t\t\"zipcode\": \"76756-8102\"\r\n\t\t},\r\n\t\t\"created_at\": \"2023-06-06 09:36:07\",\r\n\t\t\"email\": \"admin@demo.com\",\r\n\t\t\"firstname\": \"Nicolas\",\r\n\t\t\"id\": 2,\r\n\t\t\"job\": \"Lead Developer\",\r\n\t\t\"lastname\": \"Rocchi\",\r\n\t\t\"role\": {\r\n\t\t\t\"code\": \"ADMIN\",\r\n\t\t\t\"created_at\": \"2023-06-06 09:36:05\",\r\n\t\t\t\"id\": 2,\r\n\t\t\t\"name\": \"Administrator\",\r\n\t\t\t\"priority\": 2,\r\n\t\t\t\"updated_at\": \"2023-06-06 09:36:05\"\r\n\t\t},\r\n\t\t\"status\": {\r\n\t\t\t\"code\": \"ACTIVE\",\r\n\t\t\t\"created_at\": \"2023-06-06 09:36:05\",\r\n\t\t\t\"id\": 1,\r\n\t\t\t\"name\": \"Active\",\r\n\t\t\t\"updated_at\": \"2023-06-06 09:36:05\"\r\n\t\t},\r\n\t\t\"updated_at\": \"2023-06-06 09:36:07\",\r\n\t\t\"username\": \"admin\"\r\n\t},\r\n\t\"target\": {\r\n\t\t\"avatar\": null,\r\n\t\t\"company\": {\r\n\t\t\t\"address\": \"8266 Cronin Branch\",\r\n\t\t\t\"city\": \"Barrowsboro\",\r\n\t\t\t\"country\": \"Bahrain\",\r\n\t\t\t\"countryCode\": \"VI\",\r\n\t\t\t\"created_at\": \"2023-06-06 09:36:07\",\r\n\t\t\t\"id\": 1,\r\n\t\t\t\"latitude\": -66.8286,\r\n\t\t\t\"longitude\": 160.086,\r\n\t\t\t\"name\": \"Bergstrom, Marks and Dooley\",\r\n\t\t\t\"updated_at\": \"2023-06-06 09:36:07\",\r\n\t\t\t\"zipcode\": \"66385-2607\"\r\n\t\t},\r\n\t\t\"created_at\": \"2023-06-06 09:36:07\",\r\n\t\t\"email\": \"user@demo.com\",\r\n\t\t\"firstname\": \"Nicolas7\",\r\n\t\t\"id\": 1,\r\n\t\t\"job\": \"Lead Developer\",\r\n\t\t\"lastname\": \"Rocchi\",\r\n\t\t\"role\": {\r\n\t\t\t\"code\": \"USER\",\r\n\t\t\t\"created_at\": \"2023-06-06 09:36:05\",\r\n\t\t\t\"id\": 3,\r\n\t\t\t\"name\": \"User\",\r\n\t\t\t\"priority\": 3,\r\n\t\t\t\"updated_at\": \"2023-06-06 09:36:05\"\r\n\t\t},\r\n\t\t\"status\": {\r\n\t\t\t\"code\": \"ACTIVE\",\r\n\t\t\t\"created_at\": \"2023-06-06 09:36:05\",\r\n\t\t\t\"id\": 1,\r\n\t\t\t\"name\": \"Active\",\r\n\t\t\t\"updated_at\": \"2023-06-06 09:36:05\"\r\n\t\t},\r\n\t\t\"updated_at\": \"2023-06-06 11:05:19\",\r\n\t\t\"username\": \"user\"\r\n\t},\r\n\t\"type\": \"patch_user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/notifications/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"read\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/notifications/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?page=1&limit=30&order=updated_at&orderby=desc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "30"
+								},
+								{
+									"key": "order",
+									"value": "updated_at"
+								},
+								{
+									"key": "orderby",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"avatar\": \"data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMsaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA2LjAtYzAwMiA3OS4xNjQ0ODgsIDIwMjAvMDcvMTAtMjI6MDY6NTMgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi4wIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3Rjk5NDYzMDZDNEUxMUVCOTVGM0Y3MTkzQUYyMTJENiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3Rjk5NDYzMTZDNEUxMUVCOTVGM0Y3MTkzQUYyMTJENiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdGOTk0NjJFNkM0RTExRUI5NUYzRjcxOTNBRjIxMkQ2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdGOTk0NjJGNkM0RTExRUI5NUYzRjcxOTNBRjIxMkQ2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgAUABQAwERAAIRAQMRAf/EAIwAAAIDAAMBAAAAAAAAAAAAAAUHAwQGAQIIAAEAAgMBAQAAAAAAAAAAAAAAAwQBAgUABhAAAQMDAwIEBQMCBwAAAAAAAQIDBAARBSESBjFBUWEiE3GBMhQHQlIjkWKhsXKCMxUIEQACAgEEAgEEAgMAAAAAAAAAAQIDESExEgRBIgVRYTITccGRFBX/2gAMAwEAAhEDEQA/ANgTWoe5OL1xxCqS37vtBQLttxTfUDzoM74xePJK3wD5nIcXEcLTz4C+4Gtj4HzoEu2kUnfCDw2Z7JfkWDHSft2i9tVtW44dqQfADqaEr2/5FLPkopeqyQw/yOy+sJdShs21CCTbzPeod8wUfkn5SNFicyJzfuEJbSo+gFQufMA62NXr7Lz7bGhTeprOwS3U8Hwfbq444UfSa45lkmrAytKnMRgC6oJv087UGy5Q3JbS1Ysec8mexctSGbpek+pxxJ6f4+FZsYucmzF7t3CWj3MLkp85yImX9y2lO+2wquVH5UxXBZxgy7LHjOQRIzUhLrXuKuwNUhGotR/0oA7miQ8gDjwWlPtrH0Ean51H6dMEq4P4PlqEEIkqUom20902pa3rtbDdHYXkZmH5hGEHfNeBQBuad6qUnwt3Iqldrjob9Pcio+xoMXlY+RiiTHWFNkkdwQR2UDYg05XY3uO1zU45RcKtD8KOWaLLiwlClE6AX/pUyeEDSFdzPkD7+RaY9xLLbKd5J77vpt41lSbm8syu/c+SS2Qss1JmTZ7yVoU86lW0C+gSO9zTtUVFGDdNyZb43xXLZ/JIx0Bj3ktj+dR1ab/1K6fKq2XKCy2dGty0Qwx/56muDc5NSkn1WSjp5Clv+gvoX/0292ZTkn4dzuK9x1lP3DSBclAsq3wo9fchLfQDPqyjsYtxkxFJcKtyx9TKtFC1NbgU8BzBZVo5VgoUls3SluQobg3fr6DoTS1tfqP9W73Wf8jR4s+5HyD6VS/uTKWVqvobAWB00pWEsNHoerLE2s5ybQq0NaSZpNFxYCkkHUHr8DV2sgkIP8iwMzByr29lbkdB3NSkpJSG1HS58e1J0VpNpmB8lVOLbxp9TMQo2QzOUjwmQS5IcS0ggkDXS5t1tTDSismO8t4PXnAOH43BYJiDEYASgD3HbWLi/wBSlHvc1izlzlljqXBYRrZCIjEZTzyktMtpJW4roAKK4LAFTeRY5H8i8ZlT3IWJhy8uU6PvR0ANI/3L0NRLr41bSCxtbeEsiZ/MnG2mnGc/jWyiG/6H0EbS254KHa9O9Wbxxe4p2Y65F9iAHZKElIF+iulj40zY8RKUrLHNwfJtuITFkNIbkMoHtrHVSPLzpBYyes+NsyuMlqjcBV0k+VOxkaskEFHSjgAHn1N/ZOpWkKbUCFpIuCD4il7QkvxeRW8KjpjfkGIG2hsb95UdteiSoJuD8KFbrW0eRtrxZohiynUpkpfyPMZSHnFDYwiyW1LvbY0hOu0dKRtlao+leQl3VVeOc/Z+BiOSJuS4isLVdYITvPRaDpu+dJQtlZXlLDK8UmYHlLPL4LDMXD4tkQlkj0A7iAL7vR1KqN8ZXBLlblz+/wDQVduyvStR/skZ4hkMpwuYzlY6oypTaiWHl+4tLgFwR4VoWWx5Jx8C98uay/yPPQgOxJSmlJVZKyguW/UDa16elhoSp0Yw+LNsNraKlEuhQUhwnrbzrOe56PrRSkhlsOBTV79qYrkbreUE1nSnQCBWRbDjak0tYGxlGJjwUxuZ4WSqyUqk+0s/2rFjQp/gzB+Qr4tS+418R+KcOnMu5WY6Zalue4yyQNrdvpCPAUvZfKaw9jKk0pOWPYs8k5d/0+QkYiFjFz5jrHuJSkH20pGgBI0uaViks6aFktE8lzg+XnzcUXMhAcgPtnVhzWx8Aasml5yiso5KPL8yW2XEo0voE1ZPLJccIR+T424zh8lk3Qptbb6S2rqlwOG2ngQaNC1uaQauhcV9znjiU3QAncUH1DwvV2jXojkYkQAMCwtpRK0a6WgWWdKeAIpvpvcUKaDRZnsvjA8ttQO1bbiVtr/aoHQ0tJPDF+1QpxwxlcazckthiR/zI0UodDbqRWb+zCPNWV6g/lvNFwsszjcRHS9lHkguu2+hPbersKZ61fL2xke6nVg4c5py1wooH4zkvNG8oiHMiIlR3gCpxtYu3fqbeAonZoSXJ4iHv60HW5cf1tffclzkV2dIbZZSXX1KsltPUk9AKQryzHm8IVnKeRzMo9K4wGRHhwZO19wEhxxbf6T+2x60/VRx9vLGerBTRawkVLG0IFhV2bdEOJsI5/i+VWhuPeAso06ARA4L1Vl0U5DQWkg/I0GSCrUI4rkDPv8AtSEhp5CQEqv9dhYmsq+hx1WxgdzquDytUaWPExGR1fDaCrVTqbBR+KhVKpyWieBKPYsrXq8Es0cUxMRxTbyELt6llVyfmaJZFNb5YD905v2MLJm5ifjneQcbR901i5KBJQ0r+dISQS4E90/Cprq0zkq54lhrfb6FT8jYCJkkN83xyNrkpSUZZKRZJXawdsOh/dRqrm3hj3Sai+IFxbOgJoxv1I0DIsi3lUx3GfAVJp4XI1VBJA4KpJBEB8pHC1tq6epOvzpaa0aKXxzF/wAE03FT2FENvrSntYkCslM8qCo/EOUcg+6RAP3bsRIWuOXAHFJPdCT9Vu9Gim9iJTjHcHcencj4tlg8z7sVYI9+I4CEuJvrdJ/zrty7eg5nU4vIYCRIjpBx+WZKnmx0Q8Be4HY3qucA1Jpp+ULDGt7RtOu0kX+BtT+T1lWqTDKfp+VWQd7BEmnhc6E1BJ1Qw9IWG2UFxZ6BIvQ7JqKy2dKaist4CbXElWDs0gkepLQ6XHiayL+5nSJmdj5HkuMNvqTzoiXWL21A1pVMyWjLymH4D4mxHlMSWtW3Edfh8DRIs4NuZGFyzAON5lnZloqSUSWx6v7SPI9xV8leJCwHsZwiHHN2pLy9y0+JUqperKyZmIoUHVhQsrcbjzvTq2PWddrgsfQJg+j5VdMYZ//Z\",\r\n    \"email\": \"sespinossa@gmail.com\",\r\n    \"username\": \"sespinosa\",\r\n    \"firstname\": \"Suzy\",\r\n    \"lastname\": \"Espinosa\",\r\n    \"job\": \"Project Manager\",\r\n    \"password\": \"Password1\",\r\n    \"passwordConfirm\": \"Password1\",\r\n    \"role_id\": 1,\r\n    \"status_id\": 1,\r\n    \"company_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/invite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"avatar\": \"data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMsaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA2LjAtYzAwMiA3OS4xNjQ0ODgsIDIwMjAvMDcvMTAtMjI6MDY6NTMgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi4wIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3Rjk5NDYzMDZDNEUxMUVCOTVGM0Y3MTkzQUYyMTJENiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3Rjk5NDYzMTZDNEUxMUVCOTVGM0Y3MTkzQUYyMTJENiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdGOTk0NjJFNkM0RTExRUI5NUYzRjcxOTNBRjIxMkQ2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdGOTk0NjJGNkM0RTExRUI5NUYzRjcxOTNBRjIxMkQ2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgG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\",\r\n    \"email\": \"sespinosa@gmail.com\",\r\n    \"username\": \"sespinosa\",\r\n    \"firstname\": \"Suzy\",\r\n    \"lastname\": \"Espinosa\",\r\n    \"job\": \"Project Manager\",\r\n    \"role_id\": 1,\r\n    \"status_id\": 3,\r\n    \"company_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/invite",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"invite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"avatar\": \"data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMsaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA2LjAtYzAwMiA3OS4xNjQ0ODgsIDIwMjAvMDcvMTAtMjI6MDY6NTMgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi4wIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5MTcyNTgwOTZDNEUxMUVCQUQyRERDMTIzNzBEQUI5NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5MTcyNTgwQTZDNEUxMUVCQUQyRERDMTIzNzBEQUI5NCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjkxNzI1ODA3NkM0RTExRUJBRDJEREMxMjM3MERBQjk0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjkxNzI1ODA4NkM0RTExRUJBRDJEREMxMjM3MERBQjk0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgG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\",\r\n    \"email\": \"aalbisserti@gmail.com\",\r\n    \"username\": \"aalbisserti\",\r\n    \"firstname\": \"Anna\",\r\n    \"lastname\": \"Albisserti\",\r\n    \"job\": \"Graphic Designer\",\r\n    \"password\": \"Password1\",\r\n    \"passwordConfirm\": \"Password1\",\r\n    \"role_id\": 3,\r\n    \"status_id\": 1,\r\n    \"company_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id/password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"Password1\",\r\n    \"newPassword\": \"Password2\",\r\n    \"passwordConfirm\": \"Password2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/1/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
