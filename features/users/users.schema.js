@@ -123,8 +123,8 @@ exports.period = (req, res, next) => {
         'LASTWEEK',
         'LASTMONTH',
         'LASTQUARTER',
-        'LASTYEARS',
-        'LAST2YEAR',
+        'LASTYEAR',
+        'LAST2YEARS',
         'LAST5YEARS',
       )
       .required(),
