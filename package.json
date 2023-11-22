@@ -37,7 +37,7 @@
     "test:seed:debug": "set NODE_ENV=test&& npx sequelize-cli db:seed:all --debug",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --runInBand --detectOpenHandles",
     "pretest": "cross-env NODE_ENV=test npm run pretest:db:migrate:reset",
-    "pretest:db:migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run test:migration",
+    "pretest:db:migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run test:migration && npm run test:seed",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "lint:check": "eslint .",

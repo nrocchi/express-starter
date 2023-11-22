@@ -1,52 +1,36 @@
 const request = require('supertest')
 const app = require('../../index')
 
+let token = ''
+
+beforeAll(async () => {
+  const payload = {email: 'superadmin@demo.com', password: 'Password1'}
+  await request(app)
+    .post('/auth/signin')
+    .send(payload)
+    .then(({body}) => {
+      token = body.token
+    })
+})
+
 describe('Roles API', () => {
-  it('should show all roles', async () => {
-    // const results = [
-    //   {
-    //     id: 1,
-    //     code: 'SUPER_ADMIN',
-    //     name: 'Super administrator',
-    //   },
-    // ]
-    const res = await request(app).get('/roles')
-    expect(res.statusCode).toEqual(200)
-    // if (!res.body.length) {
-    //   expect(res.body).toEqual([])
-    // } else {
-    //   expect([
-    //     {
-    //       id: 1,
-    //       code: 'SUPER_ADMIN',
-    //       name: 'Super administrator',
-    //     },
-    //     {
-    //       id: 999,
-    //       code: 'code',
-    //       name: 'name',
-    //     },
-    //   ]).toEqual(expect.arrayContaining(results))
-    //   expect(res.body).toEqual(
-    //     expect.arrayContaining([
-    //       {
-    //         id: 1,
-    //         code: 'SUPER_ADMIN',
-    //         name: 'Super administrator',
-    //       },
-    //     ]),
-    //   )
-    //   expect(res.body.length >= 1).toBe(true)
-    //   expect(res.body).toEqual(
-    //     expect.arrayContaining([
-    //       expect.objectContaining({
-    //         id: 1,
-    //         code: 'SUPER_ADMIN',
-    //         name: 'Super administrator',
-    //       }),
-    //     ]),
-    //   )
-    // }
+  it('should show all roles', () => {
+    return request(app)
+      .get('/roles')
+      .auth(token, {
+        type: 'bearer',
+      })
+      .expect(200)
+      .send()
+      .expect(({body}) => {
+        expect(body.status).toBeDefined()
+        expect(body.message).toBeDefined()
+        expect(body.data).toBeDefined()
+        expect(body.total).toBeDefined()
+        expect(body.pagination).toBeDefined()
+        expect(body.data[0].id).toBeDefined()
+        expect(body.data[0].password).not.toBeDefined()
+      })
   })
 })
 

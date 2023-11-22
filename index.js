@@ -79,7 +79,6 @@ if (process.env.NODE_ENV !== 'test') {
     ),
   )
 
-  
   // Start socket
   try {
     require('./app/helpers/socket')(http)
@@ -87,7 +86,7 @@ if (process.env.NODE_ENV !== 'test') {
   } catch (error) {
     spinner.fail(chalk.red('Socket connection failed:', error))
   }
-  
+
   // Start elastic
   // try {
   //   require('./app/helpers/elastic')
