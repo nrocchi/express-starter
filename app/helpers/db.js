@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const config = require('../config/config')
 
 const db = {}
+const spinner = ora().start()
 
 const initialize = async () => {
   // Create db if it not exists
@@ -67,47 +68,41 @@ const initialize = async () => {
   db.sequelize = sequelize
 
   // Test database connection
-  if (process.env.NODE_ENV !== 'test') {
-    const spinner = ora().start()
-    try {
-      await sequelize.authenticate()
-      spinner.succeed(chalk.green('Database connection succeeded.'))
-    } catch (error) {
-      spinner.fail(chalk.red('Database connection failed:', error))
-      process.exit(0)
-    }
-  }
+  // try {
+  //   await sequelize.authenticate()
+  //   spinner.succeed(chalk.green('Database connection succeeded.'))
+  // } catch (error) {
+  //   spinner.fail(chalk.red('Database connection failed:', error))
+  //   process.exit(0)
+  // }
 
   // Database sync
-  if (process.env.NODE_ENV !== 'test') {
-    const spinner = ora().start()
-    if (config.sync === 'force') {
-      try {
-        await sequelize.sync({force: true})
-        spinner.succeed(chalk.green('Database force sync succeeded!'))
-      } catch (error) {
-        spinner.fail(chalk.red('Database force sync failed:', error))
-        process.exit(0)
-      }
-    } else if (config.sync === 'alter') {
-      try {
-        await sequelize.sync({alter: true})
-        spinner.succeed(chalk.green('Database alter sync succeeded!'))
-      } catch (error) {
-        spinner.fail(chalk.red('Database alter sync failed:', error))
-        process.exit(0)
-      }
-    } else if (config.sync) {
-      try {
-        await sequelize.sync()
-        spinner.succeed(chalk.green('Database sync succeeded!'))
-      } catch (error) {
-        spinner.fail(chalk.red('Database sync failed:', error))
-        process.exit(0)
-      }
-    } else {
-      spinner.succeed(chalk.green('Database no sync succeeded!'))
+  if (config.sync === 'force') {
+    try {
+      await sequelize.sync({force: true})
+      spinner.succeed(chalk.green('Database force sync succeeded!'))
+    } catch (error) {
+      spinner.fail(chalk.red('Database force sync failed:', error))
+      process.exit(0)
     }
+  } else if (config.sync === 'alter') {
+    try {
+      await sequelize.sync({alter: true})
+      spinner.succeed(chalk.green('Database alter sync succeeded!'))
+    } catch (error) {
+      spinner.fail(chalk.red('Database alter sync failed:', error))
+      process.exit(0)
+    }
+  } else if (config.sync) {
+    try {
+      await sequelize.sync()
+      spinner.succeed(chalk.green('Database sync succeeded!'))
+    } catch (error) {
+      spinner.fail(chalk.red('Database sync failed:', error))
+      process.exit(0)
+    }
+  } else {
+    spinner.succeed(chalk.green('Database no sync succeeded!'))
   }
 }
 

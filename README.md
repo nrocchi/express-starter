@@ -5,6 +5,7 @@ Express + MySQL API for my [React Starter](https://github.com/nrocchi/react-star
 This project was bootstrapped with [Express.js](https://expressjs.com/).
 
 ## Features
+
 - Users management with roles and statuses
 - Companies management
 - Real-time notifications management with database + websockets
@@ -24,7 +25,6 @@ This project was bootstrapped with [Express.js](https://expressjs.com/).
 - Mail templates with handlebars
 - File upload
 - Launch crons with node-cron
-- Multiple environments with cross-env
 - Log files + console with Morgan + Winston
 - Testing routes with Jest + Supertest
 - Swagger documentation + Postman collection
@@ -58,15 +58,12 @@ Follow [the express installing guide](http://expressjs.com/en/starter/installing
 
 ### Create a MySQL database for your local environment. (OPTIONAL)
 
-The name of your database must match with the `DB_NAME` variable in your `.env.development` file.
+The name of your database must match with the `DB_NAME` variable in your `.env` file.
 
-### Setup multiple environments files
+### Setup .env file
 
-**WARNING:** The `NODE_ENV` variable must match with the name of your `.env` file.\
-_e.g. The `NODE_ENV` variable of the `.env.test` file must be set to `NODE_ENV=test`_
-
-Create your `.env.development` local file based on the `.env.dist` file:\
-Provide your database, tokens, server and SMTP informations in the `.env.development` file.
+Create your `.env` local file based on the `.env.dist` file:\
+Provide your database, tokens, server and SMTP informations in the `.env` file.
 
 ```js
 NODE_ENV=
@@ -91,44 +88,28 @@ SMTP_FROM=
 WEBSITE_URL=
 ```
 
-e.g.
-- _The `NODE_ENV` variable must be set to `development`_
-- _The `SERVER_HOST` variable must be set to `localhost`_
-- _The `SERVER_PORT` variable can be set to `4000`_
-- _The `WEBSITE_URL` variable must be set with the front-end application URL_ (used in the mail templates to redirect to the front-end application).
-
-The script commands in the `./package.json` file are intended for 3 environments: `development`, `production` & `test`.\
-So you can create a `.env.production` local file and a `.env.test` local file with different informations.\
-If you do this, you can connect to others databases and servers just by running different script commands.\
-e.g.
-```
-npm run dev:migration
-```
-```
-npm run prod:seed
-```
-
-**PROTIP:** You can create as many `.env.{NODE_ENV}` files as you want, you just need to add the corresponding script commands in your `./package.json` file.
-
 ### Run the migrations
 
-Migrations are done using the `npm run {environment}:migration` command:
-```
-npm run dev:migration
+Migrations are done using the `npm run migration` command:
+
+```shell
+npm run migration
 ```
 
 ### Run the seeds
 
-Seeds are done using the `npm run {environment}:seed` command:
-```
-npm run dev:seed
+Seeds are done using the `npm run seed` command:
+
+```shell
+npm run seed
 ```
 
 ### Start the application
 
-Starting the app is done using the `npm run {environment}:start` command:
-```
-npm run dev:start
+Starting the app is done using the `npm run start` command:
+
+```shell
+npm run start
 ```
 
 Open [http://{SERVER_HOST}:{SERVER_PORT}](http://localhost:4000) to view it in the browser.
@@ -147,19 +128,19 @@ Open [http://{SERVER_HOST}:{SERVER_PORT}/doc](http://localhost:4000/doc) to view
 
 Run the app in the development mode.
 
-```console
+```shell
 npm run dev:start
 ```
 
 Run the app in the production mode.
 
-```console
+```shell
 npm run prod:start
 ```
 
 Run the tests.
 
-```console
+```shell
 npm run test
 ```
 
@@ -167,47 +148,29 @@ In the project directory, you can run:
 
 Running commands with npm `npm run [command]`
 
-| environment   | command                  | description                                                              |
-| :------------ | :----------------------- | :----------------------------------------------------------------------- |
-| `development` | dev                      | Starts a development instance of the app                                 |
-| `development` | dev:start                | Starts a nodemon development instance of the app                         |
-| `development` | dev:migration            | Apply all the migrations                                                 |
-| `development` | dev:migration:undo       | Cancel the last migration                                                |
-| `development` | dev:migration:undo:all   | Cancel all the migrations                                                |
-| `development` | dev:seed                 | Apply all the seeds                                                      |
-| `development` | dev:seed:undo            | Cancel the last seed                                                     |
-| `development` | dev:seed:undo:all        | Cancel all the seeds                                                     |
-| `development` | dev:seed:debug           | Debug the seeds if errors                                                |
-| `production`  | prod                     | Starts a production instance of the app                                  |
-| `production`  | prod:start               | Starts a nodemon production instance of the app                          |
-| `production`  | prod:migration           | Apply all the migrations                                                 |
-| `production`  | prod:migration:undo      | Cancel the last migration                                                |
-| `production`  | prod:migration:undo:all  | Cancel all the migrations                                                |
-| `production`  | prod:seed                | Apply all the seeds                                                      |
-| `production`  | prod:seed:undo           | Cancel the last seed                                                     |
-| `production`  | prod:seed:undo:all       | Cancel all the seeds                                                     |
-| `production`  | prod:seed:debug          | Debug the seeds if errors                                                |
-| `test`        | test                     | Run the tests                                                            |
-| `test`        | test:db:create           | Create a test database                                                   |
-| `test`        | test:migration           | Apply all the migrations                                                 |
-| `test`        | test:migration:undo      | Cancel the last migration                                                |
-| `test`        | test:migration:undo:all  | Cancel all the migrations                                                |
-| `test`        | test:seed                | Apply all the seeds                                                      |
-| `test`        | test:seed:undo           | Cancel the last seed                                                     |
-| `test`        | test:seed:undo:all       | Cancel all the seeds                                                     |
-| `test`        | test:seed:debug          | Debug the seeds if errors                                                |
-| `test`        | pretest                  | Run before the test script and reset the migrations on the test database |
-| `test`        | pretest:db:migrate:reset | Cancel the migrations then re-run the migrations on the test database    |
-| `all`         | debug                    | Starts the express.js debug mode                                         |
-| `all`         | format:check             | Check the Prettier format                                                |
-| `all`         | format:write             | Apply the Prettier format                                                |
-| `all`         | lint:check               | Check the ESLint format                                                  |
-| `all`         | lint:fix                 | Apply the ESLint format                                                  |
-| `all`         | swagger                  | Auto generate the Swagger documentation                                  |
+| command              | description                                                              |
+| :------------------- | :----------------------------------------------------------------------- |
+| dev                  | Starts a development instance of the app                                 |
+| start                | Starts a nodemon development instance of the app                         |
+| migration            | Apply all the migrations                                                 |
+| migration:undo       | Cancel the last migration                                                |
+| migration:undo:all   | Cancel all the migrations                                                |
+| seed                 | Apply all the seeds                                                      |
+| seed:undo            | Cancel the last seed                                                     |
+| seed:undo:all        | Cancel all the seeds                                                     |
+| seed:debug           | Debug the seeds if errors                                                |
+| test                 | Run the tests                                                            |
+| debug                    | Starts the express.js debug mode                                         |
+| format:check             | Check the Prettier format                                                |
+| format:write             | Apply the Prettier format                                                |
+| lint:check               | Check the ESLint format                                                  |
+| lint:fix                 | Apply the ESLint format                                                  |
+| swagger                  | Auto generate the Swagger documentation                                  |
 
 ## Application config
 
 Use `./app/config/config.js` file
+
 ```js
 {
   // App config

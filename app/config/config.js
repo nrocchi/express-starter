@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   // App config
   title: 'Express Starter',
@@ -23,7 +25,7 @@ module.exports = {
     },
   },
   timezone: '+02:00',
-  logging: console.log, // 'console.log' or false to show queries in console
+  logging: false, // 'console.log' or false to show queries in console
   sync: false, // true or false or 'alter' or 'force' to sync db
 
   // Elastic config

@@ -1,5 +1,4 @@
 const path = require('path')
-require('./app/config/env')
 
 module.exports = {
   'config': path.resolve('app/config', 'config.js')
