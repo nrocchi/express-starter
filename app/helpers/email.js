@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const nodemailer = require('nodemailer')
 const handlebars = require('handlebars')
 const ora = require('ora')
